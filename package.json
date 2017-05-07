@@ -1,0 +1,17 @@
+{
+  "name": "fronter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "move-files.js",
+  "dependencies": {
+    "mz": "^2.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

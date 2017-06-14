@@ -11,7 +11,7 @@ const { join } = require("path")
     files.map(f => {
         let base = dataDir
 
-        f = f.replace("¿2.+semester¿", "").split("¿")
+        f = f.replace(/^¿/, "").split("¿")
 
         const path = f.slice(0, f.length-1)
         const filename = f[f.length-1]
@@ -22,6 +22,6 @@ const { join } = require("path")
             mkdir(base).catch(e => {})
         }
 
-        rename(dataDir + "/¿2.+semester¿" + f.join("¿"), join(dataDir, join(...path), filename))
+        rename(dataDir + "/¿" + f.join("¿"), join(dataDir, join(...path), filename))
     })
 })().catch(e => { throw e })

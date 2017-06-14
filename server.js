@@ -3,14 +3,15 @@ const http = require("http")
 const { readFileSync } = require("fs")
 
 const cookie = process.argv[2]
+
 if (!cookie) {
     throw new Error("du manger at give cookie som argument")
 }
 
-http.createServer((req, res) => {
+const getTree = (id, req, res) => {
     https.request({
         hostname: "fronter.com",
-        path: "/eaaa/links" + (req.url == "/" ? "/structureprops.phtml?treeid=210474" : req.url),
+        path: "/eaaa/links" + (req.url == "/" ? "/structureprops.phtml?treeid=" + id : req.url),
         headers: {
             "Cookie": cookie
         }
@@ -26,6 +27,11 @@ http.createServer((req, res) => {
                 res.end(body)
             })
     }).end()
+}
+
+http.createServer((req, res) => {
+    // getTree("210320", req, res)
+    getTree("210474", req, res)
 }).on("error", console.log).listen(3000, () => {
     console.log("gå til http://localhost:3000/")
 })
